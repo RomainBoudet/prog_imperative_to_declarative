@@ -4,7 +4,9 @@
 
 //! Ici programmation impérative !!
 //! Faudrait passer a de la prog declarative avec des datas que l'on gére. Et que tous ce base sur ces données.
-// On recalculerais nos données si le tableau de donnée change... 
+// On recalculerais nos données si le tableau de donnée change...
+
+//! REACT va me permettre de jouir de la faciliter de manier le code avec la prog declarative (je pars de mes données pour savoir ce qu'il y a a changé) tout en ne raffraichissant que ce qui a besoin de l'être ! Pas comme ici ou je fait app.init() et je relance tous le bouzin...
 
 
 var app = {
