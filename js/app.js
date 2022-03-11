@@ -2,7 +2,30 @@
  * Ma to Do List
  */
 
- var app = {
+//! Ici programmation impérative !!
+//! Faudrait passer a de la prog declarative avec des datas que l'on gére. Et que tous ce base sur ces données.
+// On recalculerais nos données si le tableau de donnée change... 
+
+
+var app = {
+
+    //! Nos données :
+    data: [
+
+        {
+            label: 'Comprendre REACT !',
+            done: true,
+        },
+        {
+            label: 'Pratiquer REACT !',
+            done: false,
+        },
+        {
+            label: 'Developper en REACT un site de e-commerce !',
+            done: false,
+        },
+
+    ],
 
     init: function () {
 
@@ -11,7 +34,6 @@
         app.createForm();
         app.createCount();
         app.createList();
-
 
     },
 
@@ -81,7 +103,10 @@
 
         app.todoApp.appendChild(app.list);
 
-
+        //! Pour chaque objet de mon tableau de data, je construit une liste !
+        app.data.forEach((obj) => {
+            app.generateTask(obj);
+        });
 
     },
 
