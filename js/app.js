@@ -30,7 +30,8 @@ var app = {
     init: function () {
 
         app.todoApp = document.querySelector('#todo');
-
+        //! je dois vider ce qu'il y a dans la div a chaque relance :
+        app.todoApp.innerHTML = '';
         app.createForm();
         app.createCount();
         app.createList();
@@ -69,16 +70,16 @@ var app = {
         evt.preventDefault();
 
         // Je le met dans un if me perttant d'empecher les entrée vide !
+        //! je push désormais dans le tabela de donnée la nouvelle données !
         if (app.input.value) {
-            app.generateTask({
+            app.data.push({
                 label: app.input.value,
-                done: false,
+                done: false
             });
         }
+        //! et je relance app.init !
+        app.init()
 
-
-        // et je vide l'input :
-        app.input.value = '';
     },
 
     createCount: () => {
@@ -126,16 +127,19 @@ var app = {
         checkbox.type = 'checkbox';
 
 
-        checkbox.addEventListener('change', (evt) => {
+        checkbox.addEventListener('change', () => {
             // evt.target représenta ma chekbox
             // change c'est des qu'un changement arrive ! on aurait pu prendre 'click
             // je dois retrouve le li parent qui lui est associé et lui coller la classe 'done' !
             // toggle : si il y a la classe, ça la vire sinon ça la rajoute ! 
-            evt.target.closest('li').classList.toggle('todo--done');
 
+            //evt.target.closest('li').classList.toggle('todo--done');
 
-            app.updateCounter();
+            //! Maintenant je défini de mettre la valeur de la propriété done a l'inverse de ce qu'elle était soit true si elle était a false et vice versa !
+            todoObject.done = !todoObject.done;
+            app.init();
 
+            //app.updateCounter();
             // et faut mettre a jour mon compteur
 
 
@@ -164,7 +168,6 @@ var app = {
         // welcome to filter:
         const notDoneTasksCount = app.data.filter(obj => obj.done === false).length;
 
-        console.log(notDoneTasksCount)
         // je selectionne la classe todo mais pas ceux avec la classe todo--done
         // et je compte le nombre d'éléments dans la liste avec .length
         app.counter.textContent = notDoneTasksCount > 1 ? `${notDoneTasksCount} tâches en cours` : `${notDoneTasksCount} tâche en cours`
