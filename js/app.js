@@ -160,7 +160,9 @@ var app = {
 
     updateCounter: () => {
 
-        const notDoneTasksCount = document.querySelectorAll('.todo:not(.todo--done)').length;
+        //! je compte désormais combien on la propriété a false !
+        // welcome to filter:
+        const notDoneTasksCount = app.data.filter(obj => obj.done === false).length;
 
         console.log(notDoneTasksCount)
         // je selectionne la classe todo mais pas ceux avec la classe todo--done
