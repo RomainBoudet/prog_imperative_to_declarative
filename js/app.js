@@ -9,7 +9,7 @@
 
 var app = {
 
-    //! Nos données :
+    //! Nos données (pour l'exemple) :
     data: [
 
         {
@@ -119,6 +119,28 @@ var app = {
         const checkbox = document.createElement('input');
         // className va remplacer / écraser les class par celle définis 
         // classList rajoute une class sans éffacer les autres
+
+        const removeButton = document.createElement('button');
+        removeButton.className = 'todo--remove';
+        removeButton.textContent = 'X';
+
+        removeButton.addEventListener('click', () => {
+
+            // je ne garde dans data que les objet qui ne contiennent pas le texte de notre tache.
+
+            app.data = app.data.filter(obj => 
+                obj.label !== todoObject.label
+            )
+            app.init();
+            // je localise de quel tache on veut supprimer ! ??
+
+            // je la recherche dans le tableau de data pour
+
+            // je la supprime du tableau de data
+
+
+        })
+
         task.className = 'todo';
         text.className = 'todo-text';
 
@@ -142,7 +164,6 @@ var app = {
             //app.updateCounter();
             // et faut mettre a jour mon compteur
 
-
         })
 
         // et je rajoute une class suplémentaire si la task est faite via la propriété ndone !
@@ -155,6 +176,7 @@ var app = {
         // je la met dans ma list !
         task.appendChild(checkbox);
         task.appendChild(text);
+        task.appendChild(removeButton);
         app.list.appendChild(task);
         app.updateCounter();
 
